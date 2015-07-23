@@ -60,8 +60,8 @@ public class MEIReader extends AbstractReaderFromUrl{
     @Override
     public Map<String ,ArrayList<EnrolleeData>> getData() {
         Map<String, ArrayList<EnrolleeData>>  dataResultMapOfUniversity = new HashMap<>();
-        dataResultMapOfUniversity.put(Courses.c090301.toString(), getCourseData(tables_010302));
-        dataResultMapOfUniversity.put(Courses.c090302.toString(), getCourseData(tables_090301));
+        dataResultMapOfUniversity.put(Courses.c010302.toString(), getCourseData(tables_010302));
+        dataResultMapOfUniversity.put(Courses.c090301.toString(), getCourseData(tables_090301));
         return dataResultMapOfUniversity;
     }
 
