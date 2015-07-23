@@ -4,10 +4,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.text.Collator;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class MEIReader extends AbstractReaderFromUrl{
@@ -19,17 +17,14 @@ public class MEIReader extends AbstractReaderFromUrl{
     private Elements tables_010302;
     private Elements tables_090301;
 
-    private boolean isBringOriginal(String str) {
-        return str.length() == 8;
-     }
     @Override
     public void readData() throws IOException {
 
-        //Получаем 01.03.02
+        //Get 01.03.02
         Document doc =  Jsoup.connect(MEI_URL_010302).get();
         tables_010302 = doc.select(TABLE_SELECTIVE);
 
-        //Получаем 09.03.01:
+        //Get 09.03.01:
         doc = Jsoup.connect(MEI_URL_090301).get();
         tables_090301 = doc.select(TABLE_SELECTIVE);
     }
@@ -38,13 +33,16 @@ public class MEIReader extends AbstractReaderFromUrl{
         ArrayList<EnrolleeData> dataOfCourse = new ArrayList<>();
         int counterOfIds = 0;
         String[] fullName;
-        Elements tableOfCourse  = table.get(table.size()-1).select("tr");    //Таблица поступающих на перпеданное направление является предпоследней
-        tableOfCourse.remove(0); // Удаляем заголовок таблицы
-        tableOfCourse.remove(0); // Удаляем заголовок таблицы
+        Elements tableOfCourse  = table.get(table.size() - 1).select("tr");    //table of enrollees is the last one
+
+        // Delete table's title:
+        tableOfCourse.remove(0);
+        tableOfCourse.remove(0);
+
         for (Element userArr : tableOfCourse) {
             fullName = (userArr.getElementsByTag("td").get(0).text() + " NULL").split(" "); // duct tape for people with no patronic
             dataOfCourse.add(new EnrolleeData.EnrolleeDataBuilder()
-                            .id(counterOfIds++)
+                            .id(counterOfIds++) //MEI don't have their ids
                             .surName(fullName[0])
                             .name(fullName[1])
                             .patronymic(fullName[2])
@@ -66,5 +64,10 @@ public class MEIReader extends AbstractReaderFromUrl{
         dataResultMapOfUniversity.put(Courses.c090302.toString(), getCourseData(tables_090301));
         return dataResultMapOfUniversity;
     }
+
+    private boolean isBringOriginal(String str) {
+        return str.length() == 8;
+    }
+
 
 }
