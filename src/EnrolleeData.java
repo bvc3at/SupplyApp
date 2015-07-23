@@ -12,7 +12,7 @@ public class EnrolleeData {
     final private int scoresPriority1;
     final private int scoresPriority2;
     final private int scoresPriority3;
-    final private int scoresIA; //Индивидуальные достижения
+    final private int scoresIA; //Individual Achievement
     final private boolean isHostelRequire;
     final private boolean isBringOriginal;
 
@@ -112,7 +112,7 @@ public class EnrolleeData {
         private int scoresPriority1 = 0;
         private int scoresPriority2 = 0;
         private int scoresPriority3 = 0;
-        private int scoresIA = 0; //Индивидуальные достижения
+        private int scoresIA = 0; //Individual Achievement
         private boolean isHostelRequire = true;
         private boolean isBringOriginal = true;
         private int id = -1;
