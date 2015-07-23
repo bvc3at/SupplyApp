@@ -1,6 +1,4 @@
-/**
- * Created by Dmitry on 27.06.2015.
- */
+
 public class EnrolleeData {
     final static public int INT_DATA_ERROR = 0;
     final static public String COURSE_FIZ = "Физика";
@@ -124,9 +122,9 @@ public class EnrolleeData {
             this.name = name;
             return this;
         }
-        public EnrolleeDataBuilder surname(String surname) {
+        public EnrolleeDataBuilder surName(String surName) {
             assert name != null;
-            this.surname = surname;
+            this.surname = surName;
             return this;
         }
         public EnrolleeDataBuilder patronymic(String patronymic) {
