@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Dmitry on 28.06.2015.
@@ -31,7 +30,34 @@ public class DataAnalyzer {
         }
         return membersList;
     }
+    public static class ListOfEnrolleeDataWorker {
 
+        public void sortBySum(ArrayList<EnrolleeData> listOfEnrollsData) {
+            //Sort by bubble method:
+            for (int i = 0; i < listOfEnrollsData.size(); i++) {
+                for (int j = 0; j < i; j++) {
+                    if (listOfEnrollsData.get(j).getScoresSum() < listOfEnrollsData.get(j+1).getScoresSum()) {
+                        Collections.swap(listOfEnrollsData, j, j+1);
+                    }
+                }
+            }
+        }
+        public void fixIds(ArrayList<EnrolleeData> listOfEnrollsData) {
+            int counter = 0;
+            for (EnrolleeData aListOfEnrollsData : listOfEnrollsData) {
+                aListOfEnrollsData.setId(counter++);
+            }
+        }
+        public void clearAllCopies(ArrayList<EnrolleeData> listOfEnrolleeData) {
+            for (int i = 0; i < listOfEnrolleeData.size(); i++) {
+                if (!listOfEnrolleeData.get(i).isBringOriginal()) {
+                    listOfEnrolleeData.remove(i);
+                }
+            }
+        }
+
+
+    }
 
 
 }

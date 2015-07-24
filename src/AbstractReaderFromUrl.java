@@ -5,9 +5,9 @@ public abstract class AbstractReaderFromUrl implements IReaderData{
     public static final int NUM_OF_E_CHAR = 1077;
     public static final int NUM_OF_H_CHAR = 1085;
 
-    protected static int getIntFromStr(String str){ //Нет Integer.parseInt(str.trim()); и все похожее не работает. Не знаю почему.
+    protected  int getIntFromStr(String str){ //Нет Integer.parseInt(str.trim()); и все похожее не работает. Не знаю почему.
         int startFrom = 0;
-        int endAt = str.length()-1;
+        int endAt = str.length();
         searchForStart:for (int i = 0; i < str.length(); i++) {
             for (char anArrOfDigit : ARR_OF_DIGIT) {
                 if (str.charAt(i) == anArrOfDigit) {

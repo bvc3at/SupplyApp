@@ -15,8 +15,7 @@ public class MAMIReader extends AbstractReaderFromUrl{
     private static final String URL_MAMI = "http://mami.ru/index.php?id=2340";
     public static final int NUM_OF_TABLE_090301 = 18;
     public static final int NUM_OF_TABLE_090302 = 20;
-    private static Elements tables;
-
+    private Elements tables;
     public static final HashMap MAP_OF_PLAN_FOR_ACCEPTANCE = new HashMap<String, Integer>()
         {{put(Courses.c090301.toString(), 19);}{put(Courses.c090302.toString(),45);}};
     public static final HashMap MAP_OF_REQUIRED_EXAMS = new HashMap<String, String>()
@@ -36,7 +35,7 @@ public class MAMIReader extends AbstractReaderFromUrl{
             dataOfCourse.add(new EnrolleeData.EnrolleeDataBuilder()
                             .id(getIntFromStr(userArr.getElementsByTag("td").get(0).text()))
                             .name(userArr.getElementsByTag("td").get(2).text())
-                            .surname(userArr.getElementsByTag("td").get(1).text())
+                            .surName(userArr.getElementsByTag("td").get(1).text())
                             .patronymic(userArr.getElementsByTag("td").get(3).text())
                             .scoresSum(getIntFromStr(userArr.getElementsByTag("td").get(10).text()))
                             .scoresPriority1(getIntFromStr(userArr.getElementsByTag("td").get(5).text()))

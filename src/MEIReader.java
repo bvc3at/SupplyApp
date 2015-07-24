@@ -40,6 +40,12 @@ public class MEIReader extends AbstractReaderFromUrl{
         tableOfCourse.remove(0);
 
         for (Element userArr : tableOfCourse) {
+
+            //For the "Забрал документы" case
+            if (userArr.getElementsByTag("td").get(8).text().length() == 16) {
+                continue;
+            }
+
             fullName = (userArr.getElementsByTag("td").get(0).text() + " NULL").split(" "); // duct tape for people with no patronic
             dataOfCourse.add(new EnrolleeData.EnrolleeDataBuilder()
                             .id(counterOfIds++) //MEI don't have their ids
