@@ -40,7 +40,7 @@ public class DataAnalyzer {
             }
         }
         public void fixIds(ArrayList<EnrolleeData> listOfEnrollsData) {
-            int counter = 0;
+            int counter = 1;
             for (EnrolleeData aListOfEnrollsData : listOfEnrollsData) {
                 aListOfEnrollsData.setId(counter++);
             }
