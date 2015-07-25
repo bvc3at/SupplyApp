@@ -1,8 +1,5 @@
 import java.util.*;
 
-/**
- * Created by Dmitry on 28.06.2015.
- */
 public class DataAnalyzer {
     public static boolean isAmIInFirstWave(ArrayList<EnrolleeData> listOfMembers, int numOfPlanForAcceptance, String course) {
         int numIAmInList = -1;
@@ -35,7 +32,7 @@ public class DataAnalyzer {
         public void sortBySum(ArrayList<EnrolleeData> listOfEnrollsData) {
             //Sort by bubble method:
             for (int i = 0; i < listOfEnrollsData.size(); i++) {
-                for (int j = 0; j < i; j++) {
+                for (int j = 0; j < listOfEnrollsData.size() - 1; j++) {
                     if (listOfEnrollsData.get(j).getScoresSum() < listOfEnrollsData.get(j+1).getScoresSum()) {
                         Collections.swap(listOfEnrollsData, j, j+1);
                     }
@@ -52,6 +49,7 @@ public class DataAnalyzer {
             for (int i = 0; i < listOfEnrolleeData.size(); i++) {
                 if (!listOfEnrolleeData.get(i).isBringOriginal()) {
                     listOfEnrolleeData.remove(i);
+                    i--;
                 }
             }
         }
